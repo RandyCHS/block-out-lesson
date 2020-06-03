@@ -150,12 +150,16 @@ b b b b b 5 5 5 5 5 5 5 5 4 4 4
         tile.setPosition(x, index2 * 18 + 20)
     }
 }
+info.setLife(6)
 info.setScore(1)
 scene.setBackgroundColor(13)
 direction = 1
 forever(function () {
     if (projectile.bottom > 119) {
-        game.over(false, effects.slash)
+        info.changeLifeBy(-1)
+        if (info.life() == 0) {
+            game.over(false, effects.slash)
+        }
     }
     if (info.score() == 30) {
         game.over(true, effects.bubbles)
