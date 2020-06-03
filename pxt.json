@@ -1,0 +1,16 @@
+{
+    "name": "block-out-lesson",
+    "dependencies": {
+        "device": "*"
+    },
+    "description": "",
+    "files": [
+        "main.ts",
+        "README.md",
+        "main.blocks"
+    ],
+    "preferredEditor": "blocksprj",
+    "testFiles": [
+        "test.ts"
+    ]
+}
