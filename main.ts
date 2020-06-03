@@ -1,6 +1,16 @@
 namespace SpriteKind {
     export const block = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
+    sprite.setVelocity(sprite.vx, -1 * sprite.vy)
+})
+function getPos (sprite: Sprite, otherSprite: Sprite) {
+    if (sprite.x < otherSprite.x - 8 || sprite.x > otherSprite.x + 8) {
+        direction = 1
+    } else {
+        direction = 0
+    }
+}
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.block, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     getPos(sprite, otherSprite)
@@ -10,16 +20,6 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.block, function (sprite, oth
         sprite.setVelocity(sprite.vx, -1 * sprite.vy)
     }
     otherSprite.destroy()
-})
-function getPos (sprite: Sprite, otherSprite: Sprite) {
-    if (sprite.x < otherSprite.x - 8 || sprite.x > otherSprite.x + 8) {
-        direction = 1
-    } else {
-        direction = 0
-    }
-}
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
-    sprite.setVelocity(sprite.vx, -1 * sprite.vy)
 })
 let direction = 0
 let tile: Sprite = null
@@ -88,7 +88,7 @@ for (let index = 0; index <= 9; index++) {
         if (index2 % 2 == 1) {
             x = index * 18 + 8
         }
-        tilePick = Math.randomRange(0, 2)
+        tilePick = randint(0, 2)
         if (tilePick == 0) {
             tile = sprites.create(img`
 8 8 1 1 8 8 6 6 1 7 7 7 1 8 8 9 
