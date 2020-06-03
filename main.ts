@@ -21,6 +21,9 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.block, function (sprite, oth
     }
     otherSprite.destroy()
 })
+info.onLifeZero(function () {
+    game.over(false, effects.slash)
+})
 let direction = 0
 let tile: Sprite = null
 let tilePick = 0
@@ -157,9 +160,6 @@ direction = 1
 forever(function () {
     if (projectile.bottom > 119) {
         info.changeLifeBy(-1)
-        if (info.life() == 0) {
-            game.over(false, effects.slash)
-        }
     }
     if (info.score() == 30) {
         game.over(true, effects.bubbles)
